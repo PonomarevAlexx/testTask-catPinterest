@@ -9,15 +9,17 @@ const loading = document.querySelector('.loading');
 const favoritesCatsList = JSON.parse(localStorage.getItem("myCat")) || [];
 let listCats = [];
 let activePageAllCats = true;  // что бы не загружал котиков не на той вкладке
+let isLoading = true;
 
 // Получаем данные от сервера
 function getData() {
     fetch(`https://api.thecatapi.com/v1/images/search?limit=20&api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) => {
-        if(activePageAllCats) {
+        if(activePageAllCats && isLoading) {
             listCats = [...data];
             showCats(listCats);
+            isLoading = false;
         }
     })
 }
@@ -68,6 +70,7 @@ function selectAllCats() {
     favoriteCatsBtn.classList.remove("menu__btn_active");
 
     activePageAllCats = true;
+    isLoading = true;
 
     main.innerHTML = "";
     getData();
@@ -97,6 +100,7 @@ function setLocalStorage() {
 
 // Бесконечная подгрузка 
 function loadMoreContent() {
+    isLoading = true;
     getData();
 }
 
