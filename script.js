@@ -56,8 +56,10 @@ function likeCat(e) {
     if (index !== -1) {
         favoritesCatsList.splice(index, 1);
         setLocalStorage();
-        main.innerHTML = "";
-        showCats(favoritesCatsList);
+        if(!activePageAllCats) {
+            main.innerHTML = "";
+            showCats(favoritesCatsList);
+        }
     } else {
         favoritesCatsList.push({ url: el.previousElementSibling.src, id: el.previousElementSibling.alt, icon: "fa-solid" });
         setLocalStorage();

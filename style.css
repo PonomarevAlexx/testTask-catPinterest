@@ -7,7 +7,7 @@ header {
     height: 64px;
     background-color: #2196f3;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-    margin: 0 0 24px 0;
+    margin-bottom: 48px;
 }
 
 nav {
@@ -45,6 +45,8 @@ nav {
 .photo-container {
     display: flex;
     flex-wrap: wrap;
+    row-gap: 48px;
+    column-gap: 46px;
     justify-content: space-between;
     padding: 0 62px;
 }
@@ -52,7 +54,6 @@ nav {
 .photo-container__item {
     width: 225px;
     height: 225px;
-    margin: 24px 0;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -102,4 +103,34 @@ nav {
 
 .loading_hidden {
     display: none;
+}
+
+@media (max-width: 1024px) {
+    .photo-container {
+        gap: 24px;
+        justify-content: space-around;
+    }
+    .photo-container__item {
+        margin: 0 0;
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 425px) {
+    header {
+        margin-bottom: 24px;
+    }
+
+    nav {
+        margin: 0 auto;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .photo-container {
+        padding: 0 35px;
+    }
 }
