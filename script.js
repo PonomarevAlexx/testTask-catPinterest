@@ -68,14 +68,16 @@ function likeCat(e) {
 
 // Выбор вкладки всех котиков
 function selectAllCats() {
-    allCatsBtn.classList.add("menu__btn_active");
-    favoriteCatsBtn.classList.remove("menu__btn_active");
+    if(!activePageAllCats){
+        allCatsBtn.classList.add("menu__btn_active");
+        favoriteCatsBtn.classList.remove("menu__btn_active");
 
-    activePageAllCats = true;
-    isLoading = true;
+        activePageAllCats = true;
+        isLoading = true;
 
-    main.innerHTML = "";
-    getData();
+        main.innerHTML = "";
+        getData();
+    }
 }
 
 // Выбор вкладки панравившихся котиков
